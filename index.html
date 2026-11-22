@@ -999,6 +999,77 @@ html.mob #statsview, html.mob #noviceview { width: 100%; height: 100%; display: 
 html.mob .sv-box, html.mob .nv-box { max-height: 100%; }
 html.mob .gl-box { width: calc(var(--vw) * 98); height: calc(var(--vh) * 96); }
 
+/* ===== 右側欄隱藏（#game.side-off；按鈕在側欄「隱藏側欄」，牌桌右上角「◀ 側欄」打開） ===== */
+html #game.side-off, html.mob #game.side-off { grid-template-columns: 1fr; }
+#game.side-off #side { display: none; }
+#side-open { position: absolute; top: 8px; right: 8px; z-index: 35; font-size: 15px; padding: 6px 12px; opacity: .85;
+  background: rgba(22, 14, 8, .72); border: 1px solid rgba(232, 196, 106, .75); border-radius: 6px; }
+#side-open:hover { opacity: 1; }
+html.mob #side-open { top: 10px; right: 10px; font-size: 28px; padding: 10px 20px; border-radius: 10px; }
+
+/* ===== 手機版玩家欄：手牌、自己的武將卡、裝備欄同高，填滿玩家欄（玩家欄高度不變，300） ===== */
+html.mob #hand { --card-w: 188px; --card-h: 264px; }
+html.mob #hand .card { bottom: 6px; }
+html.mob #hand .card .sn { font-size: 32px; }
+html.mob #hand .card .vname { font-size: 30px; }
+html.mob #hand .card .vtag { font-size: 24px; }
+html.mob #hand .card .oxtag { font-size: 20px; padding: 1px 5px; }
+html.mob #dash-left { width: 340px; align-self: stretch; justify-content: flex-start; padding: 18px 0 6px; gap: 6px; }
+html.mob #my-judges { flex: none; }
+html.mob #my-judges .jicon { width: 44px; height: 44px; }
+html.mob #my-equips { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+html.mob #my-equips > .eqslot, html.mob #my-equips > .eqrow2 { flex: 1 1 0; min-height: 0; height: auto; }
+html.mob #my-equips .eqrow2 { gap: 6px; }
+html.mob #my-equips .eqrow2 .eqslot { height: auto; }
+html.mob #my-equips .eqslot { font-size: 26px; }
+html.mob #my-equips .eqslot .ico { font-size: 24px; min-width: 62px; }
+html.mob #my-equips .eqslot.hasimg .eqsn { font-size: 24px; padding: 3px 5px; right: 8px; }
+html.mob #my-equips .eqslot.half.hasimg .eqsn { font-size: 20px; padding: 2px 3px; }
+html.mob #my-equips .eqslot.horse .hico { width: 64px; }
+html.mob #my-equips .eqslot.horse .hpm { font-size: 28px; }
+html.mob #my-equips .eqslot.horse .hsn { font-size: 20px; padding: 2px 3px; }
+html.mob #dash-right { align-items: flex-end; padding-bottom: 6px; }
+html.mob #my-photo, html.mob #game .photo.self { width: 185px; height: 264px; }
+html.mob #my-skills { align-self: stretch; padding-top: 18px; }
+html.mob #my-judges:empty { display: none; }
+
+/* ===== 手機版：牌桌上的小字放大（舞台縮放約 0.36 倍，原本 10～15px 在 iPhone 上只有 4～5 點） ===== */
+html.mob #deckinfo { font-size: 26px; padding: 4px 12px; border-radius: 6px; left: 12px; bottom: 12px; }
+html.mob #deckpile { width: 84px; height: 118px; left: 26px; bottom: 66px; }
+html.mob #deckpile b { font-size: 30px; padding: 2px 10px; border-radius: 6px; }
+html.mob .tentry .cap { font-size: 24px; padding: 2px 10px; border-radius: 5px; max-width: 340px; margin-top: 4px; }
+html.mob .tag { font-size: 26px; padding: 4px 14px; border-radius: 8px; }
+html.mob .photo .phase { font-size: 20px; top: -26px; padding: 1px 10px; border-radius: 5px; z-index: 4; }
+html.mob .photo.islord .phase { top: auto; bottom: -32px; }
+html.mob .photo .hp { top: 32px; align-items: flex-end; }   /* 體力圖示靠右，不壓到裝備列 */
+html.mob .photo .hp .hptext { font-size: 22px; padding: 0 5px; border-radius: 5px; }
+html.mob .photo .seat { width: 30px; height: 30px; line-height: 28px; font-size: 20px; left: -18px; bottom: -18px; z-index: 3; }
+html.mob #game .photo .pname { font-size: calc(var(--photo-w) * 0.1); }
+html.mob #game .photo .hcount { width: 36px; height: 48px; line-height: 48px; font-size: 26px; left: -30px; top: 33%; z-index: 3; }
+html.mob .photo .kicon { width: 38px; left: -12px; top: -14px; }
+html.mob .photo .godtag { width: 32px; height: 32px; line-height: 32px; font-size: 20px; }
+html.mob .photo .lordseal span { font-size: 24px; }
+html.mob .photo .dying { font-size: 26px; }
+html.mob .photo.chained::after { font-size: 28px; }
+html.mob .photo .mark { font-size: 20px; padding: 1px 6px; }
+html.mob .mk img { width: 36px; height: 36px; }
+html.mob .mk b { font-size: 24px; }
+html.mob #arrows g.arrow text { font-size: 27px; }
+/* 其他武將框裡的裝備：每列 24px（原本 19px），右邊讓出體力那一欄 */
+html.mob .photo .equips { right: 18px; gap: 2px; }
+html.mob .photo .equips .eqbar, html.mob .photo .equips .eqhorse, html.mob .photo .equips .eqempty, html.mob .photo .equips .eqhalf.empty { height: 24px; }
+html.mob .photo .equips .eqtext { height: 24px; line-height: 24px; font-size: 17px; }
+html.mob .photo .equips .eqtext.half { font-size: 15px; }
+html.mob .photo .equips .eqbar .eq-sn { font-size: 18px; line-height: 20px; top: 2px; }
+html.mob .photo .equips .eqbar.half .eq-sn { font-size: 16px; }
+html.mob .photo .equips .eqhalf.empty { line-height: 22px; font-size: 15px; }
+html.mob .photo .equips .eqhorse i { width: 22px; height: 24px; }
+html.mob .photo .equips .eqhorse i.txt { font-size: 15px; line-height: 24px; }
+html.mob .photo .equips .eqhorse .hpm { font-size: 18px; }
+html.mob .photo .equips .eqhorse .hn { font-size: 15px; }
+html.mob .photo .equips .eqhorse .eq-sn { font-size: 15px; line-height: 19px; }
+html.mob #side-open { top: 22px; right: 22px; }
+
 </style>
 <script>
 /* 畫面模式：電腦版＝原本的 1920×1080 舞台；手機版（觸控裝置自動判斷）＝橫屏全螢幕。
@@ -1040,9 +1111,19 @@ html.mob .gl-box { width: calc(var(--vw) * 98); height: calc(var(--vh) * 96); }
     var cs = getComputedStyle(d), r = { t: parseFloat(cs.paddingTop) || 0, r: parseFloat(cs.paddingRight) || 0, b: parseFloat(cs.paddingBottom) || 0, l: parseFloat(cs.paddingLeft) || 0 };
     d.parentNode.removeChild(d); return r;
   };
+  // 動態島在哪一邊：window.orientation 90＝手機往左轉（上緣在左邊），-90＝往右轉；不知道就兩邊都讓開
+  V.EDGE = 20;
+  var islandAt = function () {
+    var a = typeof window.orientation === 'number' ? window.orientation : (screen.orientation && typeof screen.orientation.angle === 'number' ? screen.orientation.angle : null);
+    return a === 90 ? 'l' : (a === -90 || a === 270) ? 'r' : null;
+  };
   V.fit = function () {
     var vw = window.innerWidth, vh = window.innerHeight; if (!vw || !vh) return;
     var ins = inset(), rot = vh > vw;
+    // iPhone 橫拿時 iOS 左右兩邊都回報約 59 點安全區，但動態島／瀏海只在一邊：另一邊只留 EDGE 點（避開螢幕圓角）。
+    // 直拿轉 90 度時，底部橫條那端（畫面右側）也只留 EDGE 點。
+    if (!rot && ins.l > V.EDGE && ins.r > V.EDGE) { var at = islandAt(); if (at === 'l') ins.r = V.EDGE; else if (at === 'r') ins.l = V.EDGE; }
+    if (rot && ins.b > V.EDGE) ins.b = V.EDGE;
     var L = rot ? vh - ins.t - ins.b : vw - ins.l - ins.r, S = rot ? vw : vh;   // 網頁的寬沿著螢幕長邊
     var A = L / S, H = V.baseH, W = Math.round(H * A);
     if (W < 1920) { W = 1920; H = Math.round(W / A); }
@@ -1212,6 +1293,7 @@ html.mob .gl-box { width: calc(var(--vw) * 98); height: calc(var(--vh) * 96); }
       <button id="btn-menu">返回選單</button>
       <button id="btn-gl-gen2">武將一覽</button>
       <button id="btn-gl-card2">卡牌一覽</button>
+      <button id="btn-side" title="收起右側欄，牌桌變寬（牌桌右上角的「◀ 側欄」可再打開）">隱藏側欄</button>
       <button id="btn-tutor" class="hidden" title="新手模式的教學提示：開啟／關閉">🔰 教學</button>
       <label>音效 <input type="range" id="vol-fx" min="0" max="100" value="80"></label>
       <label>音樂 <input type="range" id="vol-bgm" min="0" max="100" value="40"></label>
@@ -1222,6 +1304,7 @@ html.mob .gl-box { width: calc(var(--vw) * 98); height: calc(var(--vh) * 96); }
     <div id="tutor" class="hidden"></div>
     <div id="log"></div>
   </div>
+  <button id="side-open" class="hidden" title="顯示右側欄（托管、返回選單、身分統計、對局紀錄）">◀ 側欄</button>
   <svg id="arrows"></svg>
   <div id="fx"></div>
   <div id="modal" class="hidden"></div>
@@ -13932,8 +14015,8 @@ var SGS = globalThis.SGS || (globalThis.SGS = {});
         var l = Math.sqrt(sx * sx + sy * sy) || 1, ux = sx / l, uy = sy / l;
         var e = edgePoint(ra, ra.cx + ux * 1000, ra.cy + uy * 1000, 0);
         var lx = e.x + ux * 46, ly = e.y + uy * 30;
-        var w = label.length * 20 + 16, rect = document.createElementNS(SVGNS, 'rect');
-        rect.setAttribute('x', lx - w / 2); rect.setAttribute('y', ly - 14); rect.setAttribute('width', w); rect.setAttribute('height', 28); rect.setAttribute('rx', 14);
+        var w = (label.length * 20 + 16) * UI.arrowK(), rect = document.createElementNS(SVGNS, 'rect');
+        rect.setAttribute('x', lx - w / 2); rect.setAttribute('y', ly - 14 * UI.arrowK()); rect.setAttribute('width', w); rect.setAttribute('height', 28 * UI.arrowK()); rect.setAttribute('rx', 14 * UI.arrowK());
         g0.appendChild(rect);
         var tx = document.createElementNS(SVGNS, 'text');
         tx.setAttribute('x', lx); tx.setAttribute('y', ly + 1); tx.setAttribute('text-anchor', 'middle'); tx.setAttribute('dominant-baseline', 'middle');
@@ -13963,8 +14046,8 @@ var SGS = globalThis.SGS || (globalThis.SGS = {});
       if (label) {
         // 標籤在曲線 70% 處（靠近目標），背景膠囊
         var tt = 0.7, lx = (1 - tt) * (1 - tt) * a.x + 2 * (1 - tt) * tt * cx + tt * tt * b.x, ly = (1 - tt) * (1 - tt) * a.y + 2 * (1 - tt) * tt * cy + tt * tt * b.y;
-        var w = label.length * 20 + 16, rect = document.createElementNS(SVGNS, 'rect');
-        rect.setAttribute('x', lx - w / 2); rect.setAttribute('y', ly - 14); rect.setAttribute('width', w); rect.setAttribute('height', 28); rect.setAttribute('rx', 14);
+        var w = (label.length * 20 + 16) * UI.arrowK(), rect = document.createElementNS(SVGNS, 'rect');
+        rect.setAttribute('x', lx - w / 2); rect.setAttribute('y', ly - 14 * UI.arrowK()); rect.setAttribute('width', w); rect.setAttribute('height', 28 * UI.arrowK()); rect.setAttribute('rx', 14 * UI.arrowK());
         g.appendChild(rect);
         var tx = document.createElementNS(SVGNS, 'text');
         tx.setAttribute('x', lx); tx.setAttribute('y', ly + 1); tx.setAttribute('text-anchor', 'middle'); tx.setAttribute('dominant-baseline', 'middle');
@@ -13990,8 +14073,8 @@ var SGS = globalThis.SGS || (globalThis.SGS = {});
     path.setAttribute('marker-end', 'url(#arrowhead' + (color === 'red' ? '-r' : '') + ')');
     g.appendChild(path);
     if (label) {
-      var lx = a.x + dx * 0.5, ly = a.y + dy * 0.5, w = label.length * 20 + 16, rect = document.createElementNS(SVGNS, 'rect');
-      rect.setAttribute('x', lx - w / 2); rect.setAttribute('y', ly - 14); rect.setAttribute('width', w); rect.setAttribute('height', 28); rect.setAttribute('rx', 14); g.appendChild(rect);
+      var lx = a.x + dx * 0.5, ly = a.y + dy * 0.5, w = (label.length * 20 + 16) * UI.arrowK(), rect = document.createElementNS(SVGNS, 'rect');
+      rect.setAttribute('x', lx - w / 2); rect.setAttribute('y', ly - 14 * UI.arrowK()); rect.setAttribute('width', w); rect.setAttribute('height', 28 * UI.arrowK()); rect.setAttribute('rx', 14 * UI.arrowK()); g.appendChild(rect);
       var tx = document.createElementNS(SVGNS, 'text'); tx.setAttribute('x', lx); tx.setAttribute('y', ly + 1); tx.setAttribute('text-anchor', 'middle'); tx.setAttribute('dominant-baseline', 'middle'); tx.textContent = label; g.appendChild(tx);
     }
     g.style.setProperty('--life', life + 'ms');
@@ -13999,13 +14082,14 @@ var SGS = globalThis.SGS || (globalThis.SGS = {});
     setTimeout(function () { g.remove(); }, life);
   };
   // 目標身上的來源標籤（誰對誰出牌）
+  UI.arrowK = function () { return window.SGSView && window.SGSView.mob ? 1.6 : 1; };   // 手機版指示線標籤放大（字 27px）
   UI.fxTag = function (p, text, cls) {
     var r = rectOf(p); if (!r) return;
     var life = Math.min(2300, Math.max(1000, (UI.room ? UI.room.aiDelay : 1000) * 1.6));
     $('fx').querySelectorAll('.tag[data-seat="' + p.seat + '"]').forEach(function (x) { x.remove(); });   // 同一人只留最新的標籤
     var f = el('div', 'tag ' + (cls || ''), esc(text)); f.dataset.seat = p.seat;
     var below = r.y + r.h + 14 < (UI.stageH || 1080) - 290;   // 下方沒空間（玩家自己）就放在框上方
-    f.style.left = r.cx + 'px'; f.style.top = (below ? r.y + r.h + 6 : r.y - 30) + 'px';
+    f.style.left = r.cx + 'px'; f.style.top = (below ? r.y + r.h + 6 : r.y - (window.SGSView && window.SGSView.mob ? 48 : 30)) + 'px';
     $('fx').appendChild(f); setTimeout(function () { f.remove(); }, life);
   };
   // 技能名稱橫幅（顯示在發動者身上）
@@ -15359,8 +15443,8 @@ var SGS = globalThis.SGS || (globalThis.SGS = {});
   var KEYS = ['nv-players', 'nv-level', 'nv-tips', 'opt-voice', 'opt-ailevel', 'opt-players', 'opt-role', 'opt-custom', 'opt-n-loyalist', 'opt-n-rebel', 'opt-n-renegade', 'opt-choices', 'opt-free', 'opt-ex', 'opt-man', 'opt-ox', 'opt-moon', 'opt-delay', 'opt-bg', 'opt-bgm', 'vol-fx', 'vol-bgm']
     .concat(PACK_IDS.map(function (k) { return 'pack-' + k; }));
   var PRESETS = {
-    std5: { players: 5, packs: ['standard'], ex: true, man: false, ox: false, moon: true },
-    std6: { players: 6, packs: ['standard'], ex: true, man: false, ox: false, moon: true },
+    std5: { players: 5, packs: ['nos_standard'], ex: true, man: false, ox: false, moon: true },   // 5／6 人標準局用懷舊標準包（舊版標準武將）
+    std6: { players: 6, packs: ['nos_standard'], ex: true, man: false, ox: false, moon: true },
     man8: { players: 8, packs: ['standard', 'wind', 'thicket', 'fire', 'mountain'], ex: true, man: true, ox: true, moon: true }
   };
   function applyPreset(id) {
@@ -15517,6 +15601,18 @@ var SGS = globalThis.SGS || (globalThis.SGS = {});
     UI.confirmBox('確定放棄目前的對局並返回選單？（這局不計入戰績）', '返回選單', '繼續遊戲').then(function (ok) { if (ok) toMenu(); });
   });
   $('btn-trust').addEventListener('click', function () { UI.setTrust(!UI.trust); });
+  // 右側欄可隱藏：牌桌與手牌區變寬（電腦版、手機版分別記住）；牌桌右上角的「◀ 側欄」再打開
+  var SIDE_KEY = 'sgs-side-off-' + (window.SGSView && window.SGSView.mob ? 'mob' : 'pc');
+  function setSide(off, keep) {
+    $('game').classList.toggle('side-off', !!off);
+    $('side-open').classList.toggle('hidden', !off);
+    if (!keep) lsSet(SIDE_KEY, off ? '1' : '0');
+    if (UI.room) UI.renderAll(true);
+    if (UI.fitDialogs) UI.fitDialogs();
+  }
+  setSide(lsGet(SIDE_KEY) === '1', true);
+  $('btn-side').addEventListener('click', function () { setSide(true); });
+  $('side-open').addEventListener('click', function () { setSide(false); });
   $('btn-sort').addEventListener('click', function () { UI.sortHand = !UI.sortHand; $('btn-sort').classList.toggle('on', UI.sortHand); UI.renderAll(); });
   $('vol-fx').addEventListener('input', function () { UI.Sound.fx = +this.value / 100; save(); });
   $('vol-bgm').addEventListener('input', function () { UI.Sound.setVol(+this.value / 100); save(); });
